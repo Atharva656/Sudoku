@@ -1,0 +1,187 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #1ca4ee; /* blue like the image */
+  padding: 30px 6%;
+  font-family: "Roboto Slab", sans-serif;
+}
+
+.game-wrapper {
+}
+
+.title {
+  font-size: 3rem;
+  letter-spacing: 5px;
+}
+
+.lives {
+  font-size: 1.8rem;
+  margin-bottom: 15px;
+  letter-spacing: 5px;
+}
+
+/* THE IMPORTANT PART */
+.sudoku-board {
+  display: grid;
+  grid-template-columns: repeat(3, auto);
+  grid-template-rows: repeat(3, auto);
+  border: 6px solid #333;
+  border-radius: 4px;
+  width: fit-content;
+}
+
+.box {
+  display: grid;
+  grid-template-columns: repeat(3, 70px);
+  grid-template-rows: repeat(3, 70px);
+  border: 3px solid #333;
+}
+
+.cell {
+  background-color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 3rem;
+  font-weight: 500;
+  border: 2px solid #c4dbeb;
+  cursor: pointer;
+  box-sizing: border-box;
+}
+
+/* Pre-filled numbers look different */
+.cell.given {
+  color: #1a9fd4; /* blue color like the theme */
+  cursor: default; /* no pointer cursor, cant click */
+}
+
+/* Empty cells show pointer so user knows they're clickable */
+.cell:not(.given) {
+  color: #333;
+  cursor: pointer;
+}
+
+.cell.highlight-row-col {
+  background-color: #d3d3d3;
+}
+
+.cell.same-number {
+  background-color: #b8b8b8;
+}
+
+.cell.correct {
+  color: #2e7d32;
+}
+
+.cell.wrong {
+  color: #c62828;
+  background-color: #ffe6e6;
+}
+
+.cell.selected {
+  background-color: #a9a9a9;
+}
+
+.difficulty {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.diff-btn {
+  padding: 8px 24px;
+  border: none;
+  border-radius: 20px;
+  background-color: white;
+  color: #1a9fd4;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.diff-btn:hover,
+.diff-btn.active {
+  background-color: #333;
+  color: white;
+}
+
+.popup-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+/* Show popup */
+.popup-overlay.show {
+  display: flex;
+}
+
+/* WHITE CARD */
+.popup-box {
+  background-color: white;
+  border-radius: 20px;
+  padding: 40px;
+  text-align: center;
+  width: 320px;
+  animation: slideUp 0.3s ease;
+}
+
+/* Slide up animation */
+@keyframes slideUp {
+  from {
+    transform: translateY(100px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.popup-emoji {
+  font-size: 4rem;
+  margin-bottom: 10px;
+}
+
+.popup-title {
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.popup-message {
+  font-size: 1rem;
+  color: #666;
+  margin-bottom: 25px;
+}
+
+.restart-btn {
+  margin-top: 15px;
+  padding: 10px 30px;
+  border: none;
+  border-radius: 20px;
+  background-color: white;
+  color: #1a9fd4;
+  font-size: 1rem;
+  font-weight: bold;
+  transition: all 0.2s;
+  cursor: pointer;
+}
+
+.restart-btn:hover {
+  background-color: #333;
+  color: white;
+}
